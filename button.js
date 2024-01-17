@@ -10,16 +10,38 @@ class DownloadItem {
 }
 
 let downloadItems = [];
+let selectedItems = [];
 
-function downloadAll() {
-	var downloadItemsJson = JSON.stringify(downloadItems);
-	var xhttp = new XMLHttpRequest();
+// function downloadAll() {
+// 	var downloadItemsJson = JSON.stringify(downloadItems);
+// 	var xhttp = new XMLHttpRequest();
 
-	console.log("est");
-	xhttp.open("POST", "http://bigoula.ddns.net:8888/");
-	xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-	xhttp.setRequestHeader("Content-Type", "application/json");
-	xhttp.send(downloadItemsJson);
+// 	console.log("est");
+// 	xhttp.open("POST", "http://bigoula.ddns.net:8888/");
+// 	xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+// 	xhttp.setRequestHeader("Content-Type", "application/json");
+// 	xhttp.send(downloadItemsJson);
+// }
+
+async function downloadAll() {
+	downloadItems.forEach((element) => {
+		if (element.isDownload == true) {
+			selectedItems.push(element);
+		}
+	})
+	var downlaodItemsJson = JSON.stringify(selectedItems);
+	console.log(selectedItems);
+	// const response = await fetch("http://bigoula.ddns.net:8888/", {
+	// 	method: "POST",
+	// 	mode: "no-cors",
+	// 	cache: "no-cache",
+	// 	headers: {
+	// 		"Content-Type": "application/json"
+	// 	},
+	// 	body: downlaodItemsJson
+	// });
+
+	// return response.json();
 }
 
 function selectForDl(index) {
