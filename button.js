@@ -1,4 +1,6 @@
 
+// type 0 == piratebay & type 1 == yts.mx
+
 class DownloadItem {
 	constructor(id, name, magnet, isDownload, type) {
 		this.id = id;
@@ -31,17 +33,17 @@ async function downloadAll() {
 	})
 	var downlaodItemsJson = JSON.stringify(selectedItems);
 	console.log(selectedItems);
-	// const response = await fetch("http://bigoula.ddns.net:8888/", {
-	// 	method: "POST",
-	// 	mode: "no-cors",
-	// 	cache: "no-cache",
-	// 	headers: {
-	// 		"Content-Type": "application/json"
-	// 	},
-	// 	body: downlaodItemsJson
-	// });
+	const response = await fetch("http://bigoula.ddns.net:8888/", {
+		method: "POST",
+		mode: "no-cors",
+		cache: "no-cache",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: downlaodItemsJson
+	});
 
-	// return response.json();
+	return response.json();
 }
 
 function selectForDl(index) {
@@ -54,7 +56,7 @@ function showResults() {
 	var ul = document.createElement("ul");
 
 	div.setAttribute("name", "_results");
-	for (var i = 0; i < downloadItems.length; i++) {
+	for (let i = 0; i < downloadItems.length; i++) {
 		var li = document.createElement("li");
 		var button = document.createElement("button");
 
@@ -72,6 +74,10 @@ function sendRequest(event) {
 	event.preventDefault(); // Prevent page reload
 	console.log("sending request");
 	var search = document.getElementsByName("_search")[0].value;
+	var type = document.getElementsByName("_tvshow")[0].value;
+	var autoMode = document.getElementsByName("_automode")[0].value;
+	console.log(type);
+	console.log(autoMode);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
@@ -85,6 +91,6 @@ function sendRequest(event) {
 			showResults();
 		}
 	};
-	xhttp.open("GET", "http://bigoula.ddns.net:8888/?type=0&search=" + search + "&count=5&auto=0", true);
+	xhttp.open("GET", "http://bigoula.ddns.net:8888/?type=0&search=" + search + "&count=5&auto=1", true);
 	xhttp.send();
 }
