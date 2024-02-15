@@ -71,6 +71,9 @@ function showResults() {
 }
 
 function sendRequest(event) {
+	var oldResults = document.getElementsByName("_results")[0];
+	if (oldResults)
+		document.removeChild(oldResults);
 	event.preventDefault(); // Prevent page reload
 	console.log("sending request");
 	var search = document.getElementsByName("_search")[0].value;
