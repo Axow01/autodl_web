@@ -1,0 +1,58 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family:'Courier New', Courier, monospace;
+}
+
+button {
+	background-color: blue;
+	border: none;
+	border-radius: 8px;
+	padding: 2px;
+	text-transform: uppercase;
+	font-size: medium;
+	color: white;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: cyan;
+	color: black;
+}
+
+ul {
+	border-style:solid;
+	border:1px;
+	border-color:black;
+	border-radius: 8px;
+	border-color: lightgrey;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+}
+
+li {
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: lightgrey;
+	border: 1px;
+	border-style: solid;
+	border-color: grey;
+	border-radius: 8px;
+	margin-bottom: 5px;
+	padding: 5px;
+	list-style: none;
+}
+
+li button {
+	float: right;
+	margin-top: -2px;
+}
+
+li button:hover {
+	cursor: pointer;
+	background-color: cyan;
+	color:black;
+}
