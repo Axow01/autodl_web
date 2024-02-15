@@ -74,8 +74,12 @@ function sendRequest(event) {
 	event.preventDefault(); // Prevent page reload
 	console.log("sending request");
 	var search = document.getElementsByName("_search")[0].value;
-	var type = document.getElementsByName("_tvshow")[0].value;
-	var autoMode = document.getElementsByName("_automode")[0].value;
+	var type = 1; // movie by default.
+	var automode = 0; // By default off.
+	if (getElementByName("_tvshow").checked)
+		type = 0;
+	if (getElementByName("_automode").checked)
+		automode = 1;
 	console.log(type);
 	console.log(autoMode);
 	var xhttp = new XMLHttpRequest();
@@ -91,6 +95,6 @@ function sendRequest(event) {
 			showResults();
 		}
 	};
-	xhttp.open("GET", "http://bigoula.ddns.net:8888/?type=0&search=" + search + "&count=5&auto=1", true);
+	xhttp.open("GET", "http://bigoula.ddns.net:8888/?type=" + type + "&search=" + search + "&count=20&auto=" + automode, true);
 	xhttp.send();
 }
