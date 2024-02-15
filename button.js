@@ -42,6 +42,11 @@ async function downloadAll() {
 		},
 		body: downlaodItemsJson
 	});
+	var oldResults = document.getElementsByName("_results");
+	for (var i = 0; oldResults[i]; i++) {
+		console.log("iterations...");
+		oldResults[i].parentNode.removeChild(oldResults[i]);
+	}
 	return response.json();
 }
 
