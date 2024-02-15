@@ -80,8 +80,6 @@ function sendRequest(event) {
 		type = 0;
 	if (document.getElementsByName("_automode")[0].checked)
 		automode = 1;
-	console.log(type);
-	console.log(autoMode);
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
