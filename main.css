@@ -2,10 +2,32 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family:'Courier New', Courier, monospace;
+	background-color: #36424e;
+}
+
+._header {
+	background-color: #212930;
+	color: white;
+	height: 80px;
+}
+
+._header ._formSearch {
+	float: right;
+	margin-right: 20px;
+	margin-top: -75px;
+}
+
+._header h1 {
+	margin-left: 10px;
+	margin-top: auto;
+}
+
+#confirmClick {
+	margin-top: 5px;
 }
 
 button {
-	background-color: blue;
+	background-color: rgb(26, 26, 66);
 	border: none;
 	border-radius: 8px;
 	padding: 2px;
@@ -16,8 +38,8 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background-color: cyan;
-	color: black;
+	background-color: rgb(35, 35, 87);
+	color: white;
 }
 
 ul {
@@ -53,6 +75,6 @@ li button {
 
 li button:hover {
 	cursor: pointer;
-	background-color: cyan;
-	color:black;
+	background-color: rgb(35, 35, 87);
+	color: white;
 }

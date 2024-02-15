@@ -44,7 +44,7 @@ async function downloadAll() {
 	});
 	var oldResults = document.getElementsByName("_results")[0];
 	if (oldResults)
-		document.removeChild(oldResults);
+		oldResults.parentNode.removeChild(oldResults);
 	return response.json();
 }
 
