@@ -76,9 +76,9 @@ function sendRequest(event) {
 	var search = document.getElementsByName("_search")[0].value;
 	var type = 1; // movie by default.
 	var automode = 0; // By default off.
-	if (getElementByName("_tvshow").checked)
+	if (getElementsByName("_tvshow")[0].checked)
 		type = 0;
-	if (getElementByName("_automode").checked)
+	if (getElementsByName("_automode")[0].checked)
 		automode = 1;
 	console.log(type);
 	console.log(autoMode);
