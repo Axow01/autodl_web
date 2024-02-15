@@ -6,20 +6,23 @@ body {
 }
 
 ._header {
+	margin: 0;
 	background-color: #212930;
 	color: white;
-	height: 80px;
+	height: 85px;
 }
 
 ._header ._formSearch {
 	float: right;
 	margin-right: 20px;
-	margin-top: -75px;
+	margin-top: -57px;
 }
 
 ._header h1 {
-	margin-left: 10px;
-	margin-top: auto;
+	margin: 0;
+	margin-left: 20px;
+	width: 250px;
+	margin-top: 5px;
 }
 
 #confirmClick {
@@ -27,10 +30,10 @@ body {
 }
 
 button {
-	background-color: rgb(26, 26, 66);
+	background-color: rgb(23, 50, 73);
 	border: none;
 	border-radius: 8px;
-	padding: 2px;
+	padding: 4px;
 	text-transform: uppercase;
 	font-size: medium;
 	color: white;
@@ -38,43 +41,36 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background-color: rgb(35, 35, 87);
+	background-color: rgb(39, 82, 121);
 	color: white;
 }
 
-ul {
-	border-style:solid;
-	border:1px;
-	border-color:black;
-	border-radius: 8px;
-	border-color: lightgrey;
-	width: 70%;
+._resultsClass {
+	width: 60%;
+	margin-top: 100px;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: #212930;
+	color: white;
 	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 100px;
 }
 
-li {
-	width: 95%;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: lightgrey;
-	border: 1px;
-	border-style: solid;
-	border-color: grey;
-	border-radius: 8px;
-	margin-bottom: 5px;
-	padding: 5px;
-	list-style: none;
-}
-
-li button {
+._resultsClass button {
 	float: right;
-	margin-top: -2px;
+	margin-top: -5px;
 }
 
-li button:hover {
-	cursor: pointer;
-	background-color: rgb(35, 35, 87);
-	color: white;
+._resultsClass li {
+	background-color: #36424e;
+	border-radius: 5px;
+	padding: 10px;
+	list-style: none;
+	margin-bottom: 5px;
+}
+
+._resultsClass ul {
+	margin: 0;
+	padding: 0;
 }

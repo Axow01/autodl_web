@@ -42,9 +42,6 @@ async function downloadAll() {
 		},
 		body: downlaodItemsJson
 	});
-	var oldResults = document.getElementsByName("_results")[0];
-	if (oldResults)
-		oldResults.parentNode.removeChild(oldResults);
 	return response.json();
 }
 
@@ -58,6 +55,7 @@ function showResults() {
 	var ul = document.createElement("ul");
 
 	div.setAttribute("name", "_results");
+	div.setAttribute("class", "_resultsClass");
 	for (let i = 0; i < downloadItems.length; i++) {
 		var li = document.createElement("li");
 		var button = document.createElement("button");
@@ -73,6 +71,11 @@ function showResults() {
 }
 
 function sendRequest(event) {
+	var oldResults = document.getElementsByName("_results");
+	for (var i = 0; oldResults[i]; i++) {
+		console.log("iterations...");
+		oldResults[i].parentNode.removeChild(oldResults[i]);
+	}
 	event.preventDefault(); // Prevent page reload
 	console.log("sending request");
 	var search = document.getElementsByName("_search")[0].value;
