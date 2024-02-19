@@ -58,14 +58,21 @@ button:hover {
 }
 
 ._resultsClass button {
-	float: right;
-	margin-top: -5px;
+	background-color: #36424e;
+	text-transform: none;
+	padding: 10px;
+	height: 100%;
+	width: 100%;
+}
+
+._resultsClass button:hover {
+	cursor: pointer;
+	background-color: #60ffba7a;
 }
 
 ._resultsClass li {
 	background-color: #36424e;
 	border-radius: 5px;
-	padding: 10px;
 	list-style: none;
 	margin-bottom: 5px;
 }
@@ -73,4 +80,36 @@ button:hover {
 ._resultsClass ul {
 	margin: 0;
 	padding: 0;
+}
+
+.loading-logo {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	margin: 50px auto;
+	margin-top: 200px;
+	display: none;
+}
+
+.loading-circle {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 8px solid transparent;
+	border-top-color: #06b86b; /* Change this color to customize */
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: spin 1s linear infinite;
+}
+
+.loading-logo h1 {
+	margin-top: 110px;
+	text-align: center;
+	color: white;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }

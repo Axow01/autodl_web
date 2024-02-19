@@ -51,14 +51,21 @@ async function downloadAll() {
 }
 
 function selectForDl(index) {
-	downloadItems[index].isDownload = true;
-	console.log("change correctly");
+	if (downloadItems[index].isDownload) {
+		document.querySelector('#downRes' + index).style.color = 'white';
+		downloadItems[index].isDownload = false;
+	}
+	else {
+		downloadItems[index].isDownload = true;
+		document.querySelector('#downRes' + index).style.color = '#06b86b';
+	}
 }
 
 function showResults() {
 	var div = document.createElement("div");
 	var ul = document.createElement("ul");
 
+	document.querySelector('.loading-logo').style.display = 'none';
 	div.setAttribute("name", "_results");
 	div.setAttribute("class", "_resultsClass");
 	for (let i = 0; i < downloadItems.length; i++) {
@@ -66,13 +73,19 @@ function showResults() {
 		var button = document.createElement("button");
 
 		button.setAttribute("onclick", "selectForDl(" + i + ")");
-		button.textContent = "select";
-		li.textContent = downloadItems[i].name;
+		button.textContent = downloadItems[i].name;
+		button.setAttribute("id", "downRes" + i);
 		li.appendChild(button);
 		ul.appendChild(li);
 	}
 	div.appendChild(ul);
 	document.body.appendChild(div);
+}
+
+function loading() {
+	var lol = document.querySelector(".loading-logo");
+
+	lol.style.display = 'block';
 }
 
 function sendRequest(event) {
@@ -84,12 +97,16 @@ function sendRequest(event) {
 	event.preventDefault(); // Prevent page reload
 	console.log("sending request");
 	var search = document.getElementsByName("_search")[0].value;
+	document.getElementsByName("_search")[0].value = "";
+	if (search == "")
+		return;
 	var type = 1; // movie by default.
 	var automode = 0; // By default off.
 	if (document.getElementsByName("_tvshow")[0].checked)
 		type = 0;
 	if (document.getElementsByName("_automode")[0].checked)
 		automode = 1;
+	loading();
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
