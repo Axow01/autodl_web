@@ -33,6 +33,9 @@ async function downloadAll() {
 	})
 	var downlaodItemsJson = JSON.stringify(selectedItems);
 	console.log(selectedItems);
+	selectedItems.splice(0, selectedItems.length);
+	downloadItems.splice(0, downloadItems.length);
+	console.log(selectedItems, downloadItems);
 	const response = await fetch("http://bigoula.ddns.net:8888/", {
 		method: "POST",
 		mode: "no-cors",
