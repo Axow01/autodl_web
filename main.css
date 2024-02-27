@@ -25,6 +25,13 @@ body {
 	margin-top: 5px;
 }
 
+.sign-upform {
+	width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
 #confirmClick {
 	margin-top: 5px;
 }
