@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["username"])) {
+	header("Location: login/");
+	print("test");
+}
+
+if (isset($_GET['destroy'])) {
+	session_destroy();
+	header("Refresh: 0");
+}
+
+function generateUID() {
+	return (uniqid());
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +40,7 @@
 				<input type="text" placeholder="Search..." name="_search" />
 				<button onclick="sendRequest(event)">Search</button>
 			</form>
-			<button id="confirmClick" onclick="downloadAll()">Confirm Download</button>
+			<button id="confirmClick" onclick="downloadAll(<?php echo generateUID(); ?>)">Confirm Download</button>
 		</div>
 	</div>
 	<div class="loading-logo">

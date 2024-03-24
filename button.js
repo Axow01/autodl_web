@@ -2,12 +2,13 @@
 // type 0 == piratebay & type 1 == yts.mx
 
 class DownloadItem {
-	constructor(id, name, magnet, isDownload, type) {
+	constructor(id, name, magnet, isDownload, type, uniqueID) {
 		this.id = id;
 		this.name = name;
 		this.magnet = magnet;
 		this.isDownload = isDownload;
 		this.type = type;
+		this.uniqueID = uniqueID;
 	}
 }
 
@@ -25,13 +26,27 @@ let selectedItems = [];
 // 	xhttp.send(downloadItemsJson);
 // }
 
-async function downloadAll() {
+async function downloadAll(uniqueID) {
 	downloadItems.forEach((element) => {
 		if (element.isDownload == true) {
+			element.uniqueID = uniqueID;
 			selectedItems.push(element);
 		}
 	})
 	var downlaodItemsJson = JSON.stringify(selectedItems);
+	var te = {
+		selectedElement: downlaodItemsJson
+	};
+	fetch('getjj.php', {
+		method: 'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: downlaodItemsJson
+	})
+		.then(response => response.json())
+		.then(response => console.log(JSON.stringify(response)))
 	console.log(selectedItems);
 	selectedItems.splice(0, selectedItems.length);
 	downloadItems.splice(0, downloadItems.length);
@@ -50,7 +65,7 @@ async function downloadAll() {
 		console.log("iterations...");
 		oldResults[i].parentNode.removeChild(oldResults[i]);
 	}
-	return response.json();
+	return downlaodItemsJson;
 }
 
 function selectForDl(index) {
