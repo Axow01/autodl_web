@@ -19,8 +19,8 @@ if (isset($_SESSION['selectedElement'])) {
 		$name = $data[$i]['name'];
 		$magnet = $data[$i]['magnet'];
 		$type = $data[$i]['type'];
-		$stmt = $c->prepare("INSERT INTO download_elements (request_id, name, magnet, type) VALUES (?, ?, ?, ?)");
-		$stmt->bind_param('issi', $requestId, $name, $magnet, $type);
+		$stmt = $c->prepare("INSERT INTO download_elements (request_id, name, magnet, type, unique_id) VALUES (?, ?, ?, ?, ?)");
+		$stmt->bind_param('issis', $requestId, $name, $magnet, $type, sha1($uniqueId . $name));
 		$stmt->execute();
 	}
 	unset($_SESSION['selectedElement']);
