@@ -27,6 +27,7 @@ let selectedItems = [];
 // }
 
 async function downloadAll(uniqueID) {
+	uniqueID = unn();
 	downloadItems.forEach((element) => {
 		if (element.isDownload == true) {
 			element.uniqueID = uniqueID;
@@ -37,7 +38,7 @@ async function downloadAll(uniqueID) {
 	var te = {
 		selectedElement: downlaodItemsJson
 	};
-	fetch('getjj.php', {
+	await fetch('getjj.php', {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -45,13 +46,11 @@ async function downloadAll(uniqueID) {
 		},
 		body: downlaodItemsJson
 	})
-		.then(response => response.json())
-		.then(response => console.log(JSON.stringify(response)))
 	console.log(selectedItems);
 	selectedItems.splice(0, selectedItems.length);
 	downloadItems.splice(0, downloadItems.length);
 	console.log(selectedItems, downloadItems);
-	const response = await fetch("http://bigoula.ddns.net:8888/", {
+	fetch("http://bigoula.ddns.net:8888/", {
 		method: "POST",
 		mode: "no-cors",
 		cache: "no-cache",

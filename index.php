@@ -16,7 +16,6 @@ function generateUID() {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -27,6 +26,11 @@ function generateUID() {
 </head>
 
 <body>
+	<script>
+		function unn() {
+			return "<?php echo generateUID(); ?>";
+		}
+	</script>
 	<div class="_header">
 		<br>
 		<h1>Auto Downloader</h1>
@@ -40,7 +44,7 @@ function generateUID() {
 				<input type="text" placeholder="Search..." name="_search" />
 				<button onclick="sendRequest(event)">Search</button>
 			</form>
-			<button id="confirmClick" onclick="downloadAll(<?php echo generateUID(); ?>)">Confirm Download</button>
+			<button id="confirmClick" onclick="downloadAll(unn())">Confirm Download</button>
 		</div>
 	</div>
 	<div class="loading-logo">
